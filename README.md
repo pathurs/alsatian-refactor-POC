@@ -52,7 +52,7 @@ runner.addTest(
         Expect(
             new Promise((resolve, reject) => {
                 setTimeout(() => {
-                    reject();
+                    resolve();
                 }, 20);
             })
         ).toResolve('resolve after 20 milliseconds should resolve'); // Pass
@@ -71,7 +71,7 @@ runner.addTest(
         Expect(
             new Promise((resolve, reject) => {
                 setTimeout(() => {
-                    reject();
+                    resolve();
                 }, 2);
             })
         ).toResolve('resolve after 2 milliseconds should resolve'); // Pass
@@ -90,8 +90,8 @@ runner.run();
 // Passed:  Expected [object Promise] ToResolve undefined.Description: resolve should resolve
 // Failed:  Expected [object Promise] not ToResolve undefined.Description: resolve should not resolve
 // Passed:  Expected [object Promise] not ToResolve undefined.Description: reject should not resolve
-// Failed:  Expected [object Promise] ToResolve undefined.Description: resolve after 2 milliseconds should resolve
+// Passed:  Expected [object Promise] ToResolve undefined.Description: resolve after 2 milliseconds should resolve
 // Failed:  Expected [object Promise] ToResolve undefined.Description: reject after 10 milliseconds should resolve
-// Failed:  Expected [object Promise] ToResolve undefined.Description: resolve after 20 milliseconds should resolve
+// Passed:  Expected [object Promise] ToResolve undefined.Description: resolve after 20 milliseconds should resolve
 // Failed:  Expected [object Promise] ToResolve undefined.Description: reject after 100 milliseconds should resolve
 ```
