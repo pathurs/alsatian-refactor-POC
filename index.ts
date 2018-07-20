@@ -56,11 +56,13 @@ runner.run();
 
 // Results
 //
-// Failed:  Expected 1 ToBe 0
-// Passed:  Expected 1 ToBe 1
-// Failed:  Expected 1 not ToBe 1
-// Passed:  Expected 1 not ToBe 0
-// Failed:  Expected [object Promise] ToResolve undefined
-// Passed:  Expected [object Promise] ToResolve undefined
-// Failed:  Expected [object Promise] not ToResolve undefined
-// Passed:  Expected [object Promise] not ToResolve undefined
+// Failed:  Expected 1 ToBe 0.Description: 1 === 0
+// Passed:  Expected 1 ToBe 1.Description: 1 === 1
+// Failed:  Expected 1 not ToBe 1.Description: 1 !== 1
+// Passed:  Expected 1 not ToBe 0.Description: 1 !== 0
+// Failed:  Expected [object Promise] ToResolve undefined.Description: reject should resolve
+// Passed:  Expected [object Promise] ToResolve undefined.Description: resolve should resolve
+// Failed:  Expected [object Promise] not ToResolve undefined.Description: resolve should not resolve
+// Passed:  Expected [object Promise] not ToResolve undefined.Description: reject should not resolve
+// Passed:  Expected [object Promise] not ToResolve undefined.Description: resolve after 20 milliseconds should resolve
+// Failed:  Expected [object Promise] ToResolve undefined.Description: reject after 100 milliseconds should resolve
