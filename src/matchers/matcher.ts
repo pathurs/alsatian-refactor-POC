@@ -19,19 +19,25 @@ export class Matcher<T> {
     }
 
     public async pass(reason: string = this.makeReason()): Promise<TestResult> {
-        return new TestResult(true, reason);
+        return this.makeResult(true, reason);
     }
 
     public async fail(reason: string = this.makeReason()): Promise<TestResult> {
-        return new TestResult(false, reason);
+        return this.makeResult(false, reason);
     }
 
     public async skip(reason: string = this.makeReason()): Promise<TestResult> {
-        return new TestResult(undefined, reason);
+        return this.makeResult(undefined, reason);
+    }
+
+    private async makeResult(status: boolean | undefined, reason: string) {
+        return new TestResult(status === undefined ? undefined : status === this.shouldMatch, reason);
     }
 
     private makeReason() {
-        return `Expected ${this.actualValue} ${this.constructor.name} ${this.expectedValue}`;
+        return `Expected ${this.actualValue} ${this.shouldMatch ? '' : 'not '}${this.constructor.name} ${
+            this.expectedValue
+        }`;
     }
 }
 
