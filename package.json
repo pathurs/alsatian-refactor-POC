@@ -18,5 +18,8 @@
   "homepage": "https://github.com/pathurs/alsatian-refactor-POC#readme",
   "dependencies": {
     "tslib": "^1.9.3"
+  },
+  "devDependencies": {
+    "@types/node": "^10.5.2"
   }
 }

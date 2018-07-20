@@ -1,17 +1,12 @@
 import { TestResult } from '../test-result';
 import { matchers } from '../expect';
 
-export class Matcher<T> {
-    public static create<T>(actualValue: T, shouldMatch: boolean) {
-        return (expectedValue?: T) => {
-            matchers.push(new this(actualValue, expectedValue, shouldMatch));
-        };
-    }
-
+export abstract class Matcher<T> {
     constructor(
         public readonly actualValue: T,
         public readonly expectedValue: T | undefined,
-        public readonly shouldMatch: boolean
+        public readonly shouldMatch: boolean,
+        public readonly description?: string
     ) {}
 
     public async match(): Promise<TestResult> {
@@ -37,7 +32,7 @@ export class Matcher<T> {
     private makeReason() {
         return `Expected ${this.actualValue} ${this.shouldMatch ? '' : 'not '}${this.constructor.name} ${
             this.expectedValue
-        }`;
+        }.${this.description ? `Description: ${this.description}` : ''}`;
     }
 }
 
